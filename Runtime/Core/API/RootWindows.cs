@@ -270,11 +270,7 @@ public class RootWindows : MonoBehaviour {
 
 // ~~ private
     private void Awake() { 
-        if (!GameObject.FindObjectOfType<EventSystem>()) {
-            GameObject eventSystem = new GameObject("EventSystem");
-            eventSystem.AddComponent<EventSystem>();
-            eventSystem.AddComponent<BaseInputModule>();
-        }
+        EventSystemUtils.TryInitEventSystem();
         gameObject.name = "Root Windows";
 
         _windowManager = gameObject.AddComponent<WindowManager>();

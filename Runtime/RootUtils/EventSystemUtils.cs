@@ -6,10 +6,10 @@ public static class EventSystemUtils {
     /// if one does not already exist, and attaches a StandaloneInputModule.
     /// </summary>
     public static void TryInitEventSystem() {
-            if (!GameObject.FindObjectOfType<EventSystem>()) {
-                GameObject eventSystem = new GameObject("EventSystem");
-                eventSystem.AddComponent<EventSystem>();
-                eventSystem.AddComponent<StandaloneInputModule>();
-            }
+        if (!GameObject.FindObjectOfType<EventSystem>()) {
+            GameObject eventSystem = new GameObject("EventSystem");
+            eventSystem.AddComponent<EventSystem>();
+            eventSystem.AddComponent<StandaloneInputModule>();
+        }
     }
 }
