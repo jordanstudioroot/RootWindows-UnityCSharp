@@ -285,7 +285,7 @@ public class Subject : ISubject {
         else if (data is IDescriptionData)
             _descriptionData = data as IDescriptionData;
         else if (data is IPortraitData)
-            _portraitData = data as PortraitData;
+            _portraitData = data as IPortraitData;
 
         Refresh();
         RegisterOnDataChangedHandler(data);
