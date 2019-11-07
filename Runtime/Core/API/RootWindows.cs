@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 
 public class RootWindows : MonoBehaviour {
@@ -268,7 +269,11 @@ public class RootWindows : MonoBehaviour {
 // ~~ public
 
 // ~~ private
-    private void Awake() {
+    private void Awake() { 
+        if (!GameObject.FindObjectOfType<EventSystem>()) {
+            GameObject eventSystem = new GameObject("EventSystem");
+            eventSystem.AddComponent<EventSystem>();
+        }
         gameObject.name = "Root Windows";
 
         _windowManager = gameObject.AddComponent<WindowManager>();
