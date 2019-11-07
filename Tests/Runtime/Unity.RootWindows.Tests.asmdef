@@ -2,7 +2,7 @@
     "name": "Unity.RootWindows.Runtime.Tests",
     "references": [
         "GUID:41c09094fa849944c8384f7be7b82b40",
-        ""
+        "GUID:61f3994b2abe96b48ab6bfdf63d1da5b"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

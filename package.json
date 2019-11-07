@@ -6,7 +6,8 @@
     "unity": "2019.1", 
     "unityRelease": "7f1",
     "dependencies": {
-        "com.unity.textmeshpro": "2.0.1"
+        "com.unity.textmeshpro": "2.0.1",
+        "jnelsis.root-extensions" : "1.0.0"
     },
     "keywords": [
         "Root",
