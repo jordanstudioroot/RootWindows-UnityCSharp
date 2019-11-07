@@ -273,6 +273,7 @@ public class RootWindows : MonoBehaviour {
         if (!GameObject.FindObjectOfType<EventSystem>()) {
             GameObject eventSystem = new GameObject("EventSystem");
             eventSystem.AddComponent<EventSystem>();
+            eventSystem.AddComponent<BaseInputModule>();
         }
         gameObject.name = "Root Windows";
 
