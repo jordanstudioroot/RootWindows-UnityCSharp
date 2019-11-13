@@ -302,7 +302,11 @@ public class Subject : ISubject {
         DeregisterOnDataChangedHandler(data);
     }
 
-    public void TryAddAbility(Action onAbilityConfirm) {
+    public void TryAddAbility(
+        Action onAbilityClick,
+        Action onAbilityConfirm
+    ) {
+        // TODO Implement functionality for onAbilty click.
         if (_selfAbilities == null) {
             _selfAbilities = new List<Action>();
             _selfAbilities.Add(onAbilityConfirm);
@@ -316,7 +320,10 @@ public class Subject : ISubject {
             throw new ArgumentException(onAbilityConfirm.Method.Name + " already present on subject.");
     }
 
-    public void TryAddAbility(Action onAbilityClick, Action<Vector3> onAbilityConfirm) {
+    public void TryAddAbility(
+        Action onAbilityClick,
+        Action<Vector3> onAbilityConfirm
+    ) {
         if (_locationAbilities == null) {
             _locationAbilities = new Dictionary<Action, Action<Vector3>>();
             _locationAbilities.Add(onAbilityClick, onAbilityConfirm);
@@ -332,7 +339,10 @@ public class Subject : ISubject {
             );
     }
 
-    public void AddAbility(Action onAbilityClick, Action<GameObject[]> onAbilityConfirm) {
+    public void AddAbility(
+        Action onAbilityClick,
+        Action<GameObject[]> onAbilityConfirm
+    ) {
         if (_objectAbilities == null) {
             _objectAbilities = new Dictionary<Action, Action<GameObject[]>>();
             _objectAbilities.Add(onAbilityClick, onAbilityConfirm);

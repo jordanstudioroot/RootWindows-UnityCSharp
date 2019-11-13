@@ -92,14 +92,14 @@ public static class ValueSourceCommon {
     public static List<Action> StubNoArgActionList(int actions) {
         List<Action> result = new List<Action>();
         for (int i = 0; i < actions; i++)
-            result.Add(StubNoArgAction());
+            result.Add(GetStubNoArgAction());
         return result;
     }
 
     public static List<Action<Vector3>> StubV3ArgActionList(int actions) {
         List<Action<Vector3>> result = new List<Action<Vector3>>();
         for (int i = 0; i < actions; i++)
-            result.Add(StubV3ArgAction());
+            result.Add(GetStubV3ArgAction());
         return result;
     }
 
@@ -107,14 +107,14 @@ public static class ValueSourceCommon {
         Dictionary<Action, Action<Vector3>> result = 
             new Dictionary<Action, Action<Vector3>>();
         for (int i = 0; i < actions; i++)
-            result.Add(StubNoArgAction(), StubV3ArgAction());
+            result.Add(GetStubNoArgAction(), GetStubV3ArgAction());
         return result;
     }
 
     public static List<Action<GameObject[]>> StubGameObjectArgActionList(int actions) {
         List<Action<GameObject[]>> result = new List<Action<GameObject[]>>();
         for (int i = 0; i < actions; i++)
-            result.Add(StubGameObjectArgAction());
+            result.Add(GetStubGameObjectArrAction());
         return result;
     }
 
@@ -122,21 +122,21 @@ public static class ValueSourceCommon {
         Dictionary<Action, Action<GameObject[]>> result = 
             new Dictionary<Action, Action<GameObject[]>>();
         for (int i = 0; i < actions; i++)
-            result.Add(StubNoArgAction(), StubGameObjectArgAction());
+            result.Add(GetStubNoArgAction(), GetStubGameObjectArrAction());
         return result;
     }
 
-    public static Action StubNoArgAction() {
+    public static Action GetStubNoArgAction() {
         Action result = Substitute.For<Action>();
         return result;
     }
 
-    public static Action<Vector3> StubV3ArgAction() {
+    public static Action<Vector3> GetStubV3ArgAction() {
         Action<Vector3> result = Substitute.For<Action<Vector3>>();
         return result;
     }
 
-    public static Action<GameObject[]> StubGameObjectArgAction() {
+    public static Action<GameObject[]> GetStubGameObjectArrAction() {
         Action<GameObject[]> result = Substitute.For<Action<GameObject[]>>();
         return result;
     }

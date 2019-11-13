@@ -477,6 +477,130 @@ namespace Tests
             DestroyAllGameObjects();
         }
 
+        [UnityTest]
+        public IEnumerator RootWindows_RegisterSubject_DoesNotThrowException() {
+// Set Up            
+            GameObject testObj = new GameObject("testobj");
+            RootWindows testMono = testObj.AddComponent<RootWindows>();
+            IAttributeData testData = ValueSourceCommon.GetSubAttributeData();
+            
+// Assert
+            Assert.DoesNotThrow(() => {
+                RootWindows.Register("test", testData);
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+
+// Tear Down
+            DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator RootWindows_RegisterAction_DoesNotThrowException() {
+// Set Up            
+            GameObject testObj = new GameObject("testobj");
+            RootWindows testMono = testObj.AddComponent<RootWindows>();
+            
+// Assert
+            Assert.DoesNotThrow(() => {
+                RootWindows.Register(
+                    "test",
+                    ValueSourceCommon.GetStubNoArgAction(),
+                    ValueSourceCommon.GetStubNoArgAction()
+                );
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+
+// Tear Down
+            DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator RootWindows_RegisterSelfAction_DoesNotThrowException() {
+// Set Up            
+            GameObject testObj = new GameObject("testobj");
+            RootWindows testMono = testObj.AddComponent<RootWindows>();
+            
+// Assert
+            Assert.DoesNotThrow(() => {
+                RootWindows.Register(
+                    "test",
+                    ValueSourceCommon.GetStubNoArgAction(),
+                    ValueSourceCommon.GetStubV3ArgAction()
+                );
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+
+// Tear Down
+            DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator RootWindows_RegisterV3Action_DoesNotThrowException() {
+// Set Up            
+            GameObject testObj = new GameObject("testobj");
+            RootWindows testMono = testObj.AddComponent<RootWindows>();
+            
+// Assert
+            Assert.DoesNotThrow(() => {
+                RootWindows.Register(
+                    "test",
+                    ValueSourceCommon.GetStubNoArgAction(),
+                    ValueSourceCommon.GetStubNoArgAction()
+                );
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+
+// Tear Down
+            DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator RootWindows_RegisterGOArrAction_DoesNotThrowException() {
+// Set Up            
+            GameObject testObj = new GameObject("testobj");
+            RootWindows testMono = testObj.AddComponent<RootWindows>();
+            
+// Assert
+            Assert.DoesNotThrow(() => {
+                RootWindows.Register(
+                    "test",
+                    ValueSourceCommon.GetStubNoArgAction(),
+                    ValueSourceCommon.GetStubGameObjectArrAction()
+                );
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+
+// Tear Down
+            DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator RootWindows_GetSubject_DoesNotThrowException() {
+// Set Up            
+            GameObject testObj = new GameObject("testobj");
+            RootWindows testMono = testObj.AddComponent<RootWindows>();
+            
+// Assert
+            Assert.DoesNotThrow(() => {
+                RootWindows.Register(
+                    "test",
+                    ValueSourceCommon.GetStubNoArgAction(),
+                    ValueSourceCommon.GetStubGameObjectArrAction()
+                );
+                ISubject subject = RootWindows.Subject("test");
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+
+// Tear Down
+            DestroyAllGameObjects();
+        }
+
 // Set Up Methods
         private void CreateTestCamera() {
             GameObject cameraObj = new GameObject("Test Camera");

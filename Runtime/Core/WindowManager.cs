@@ -165,14 +165,25 @@ public class WindowManager : MonoBehaviour
         
     }
 
-    public void Register<T>(string uniqueID, T data) where T : IViewData {
+    public void Register(string uniqueID, IViewData data) {
         Debug.Log("Registering " + uniqueID + " as data provider.\n");
         TryRegisterSubject(uniqueID, _subjects, data);
     }
 
-    public void Register(string uniqueID, Action onAbilityConfirm) {
-        Debug.Log("Registering " + uniqueID + " with ability " + onAbilityConfirm.Method.Name + ".\n");
-        TryRegisterAbility(uniqueID, _subjects, onAbilityConfirm);
+    public void Register(
+        string uniqueID,
+        Action onAbilityClick,
+        Action onAbilityConfirm
+    ) {
+        Debug.Log(
+            "Registering " + uniqueID + " with ability " +
+                onAbilityConfirm.Method.Name + ".\n");
+        TryRegisterAbility(
+            uniqueID,
+            _subjects,
+            onAbilityClick,
+            onAbilityConfirm
+        );
     }
 
     public void Register(
@@ -180,7 +191,9 @@ public class WindowManager : MonoBehaviour
         Action onAbilityClick,
         Action<Vector3> onAbilityConfirm
     ) {
-        Debug.Log("Registering " + uniqueID + " with ability " + onAbilityConfirm.Method.Name + ".\n");
+        Debug.Log(
+            "Registering " + uniqueID + " with ability " +
+                onAbilityConfirm.Method.Name + ".\n");
         TryRegisterAbility(
             uniqueID, 
             _subjects, 
@@ -209,8 +222,14 @@ public class WindowManager : MonoBehaviour
         // if no data or abilities, destroy GameObject
     }
 
-    public void Deregister(string uniqueID, Action onAbilityConfirm) {
-        Debug.Log("Deregistering " + onAbilityConfirm.Method.Name + " on " + uniqueID + ".");
+    public void Deregister(
+        string uniqueID,
+        Action onAbilityClick,
+        Action onAbilityConfirm
+    ) {
+        Debug.Log(
+            "Deregistering " + onAbilityConfirm.Method.Name + " on " + uniqueID + ".");
+            
         TryDeregisterAbility(_subjects[uniqueID], onAbilityConfirm);
         // if no data or abilities, destroy GameObject
     }
@@ -290,20 +309,30 @@ public class WindowManager : MonoBehaviour
     private void TryRegisterAbility(
         string uniqueID,
         Dictionary<string, Subject> subjects,
+        Action onAbilityClick,
         Action onAbilityConfirm
     ) {
         if (subjects.ContainsKey(uniqueID)) {
             if (subjects[uniqueID] == null) {
                 subjects[uniqueID] = new Subject(Canvas);
-                subjects[uniqueID].TryAddAbility(onAbilityConfirm);
+                subjects[uniqueID].TryAddAbility(
+                    onAbilityClick,
+                    onAbilityConfirm
+                );
             }
             else {
-                subjects[uniqueID].TryAddAbility(onAbilityConfirm);
+                subjects[uniqueID].TryAddAbility(
+                    onAbilityClick,
+                    onAbilityConfirm
+                );
             }
         }
         else {
             subjects.Add(uniqueID, new Subject(Canvas));
-            subjects[uniqueID].TryAddAbility(onAbilityConfirm);
+            subjects[uniqueID].TryAddAbility(
+                onAbilityClick,
+                onAbilityConfirm
+            );
         }
     }
 

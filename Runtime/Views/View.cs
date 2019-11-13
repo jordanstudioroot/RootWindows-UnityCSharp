@@ -193,8 +193,6 @@ public abstract class View : MonoBehaviour
     public abstract void SetSize(ViewSizes size);
   
     public void SetLocation(CardinalDirections location) {
-        Debug.Log("setting location of " + name + " to " + location);
-        Debug.Log(DebugUtils.StackTrace);
         switch (location) {
             case CardinalDirections.North:
                 ViewData.PosX = Screen.width / 2f;
