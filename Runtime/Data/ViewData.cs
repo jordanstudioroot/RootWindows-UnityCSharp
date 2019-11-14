@@ -14,7 +14,7 @@ public class ViewData {
     /// <summary>
     /// The default content background color for a view.
     /// </summary>
-    public static readonly Color DefaultContentBGColor = new Color(1f, 1f, 1f, .25f); // Semi-transparent white
+    public static readonly Color DefaultContentBGColor = new Color(1f, 1f, 1f, 1f); // Semi-transparent white
 
     /// <summary>
     /// The default background color for an object targeted action.

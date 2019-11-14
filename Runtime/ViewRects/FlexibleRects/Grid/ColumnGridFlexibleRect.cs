@@ -20,6 +20,7 @@ public class ColumnGridFlexibleRect : GridViewRect
         GameObject result = new GameObject("ColumnGridViewRect");
         ColumnGridFlexibleRect resultMono = result.AddComponent<ColumnGridFlexibleRect>();
         resultMono.ViewData = viewData;
+        resultMono.BGColor = new Color(0f, 0f, 0f, 0f);
         resultMono.GridLayoutGroup.constraint = ConstraintType;
         resultMono.GridLayoutGroup.constraintCount = constraintCount;
         return resultMono;
@@ -27,6 +28,6 @@ public class ColumnGridFlexibleRect : GridViewRect
 
     protected override void HandleViewDataChanged(ViewData data)
     {
-        BGColor = data.ContentBGColor;
+        //BGColor = data.ContentBGColor;
     }
 }

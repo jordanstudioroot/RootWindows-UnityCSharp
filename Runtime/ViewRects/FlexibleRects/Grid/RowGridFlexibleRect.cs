@@ -20,6 +20,7 @@ public class RowGridFlexibleRect : GridViewRect
         GameObject result = new GameObject();
         RowGridFlexibleRect resultMono = result.AddComponent<RowGridFlexibleRect>();
         resultMono.GridLayoutGroup.constraint = ConstraintType;
+        resultMono.BGColor = new Color(0f, 0f, 0f, 0f);
         resultMono.ConstraintCount = constraintCount;
         return resultMono;
     }

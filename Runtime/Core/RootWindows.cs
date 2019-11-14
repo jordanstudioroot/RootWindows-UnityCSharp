@@ -29,6 +29,8 @@ public class RootWindows : MonoBehaviour {
     private static RootEvent<string, Action, Action<GameObject[]>, string>
         _deregisterObjectAbilityEvent;
 
+    private static RootEvent<string, Color, string> _setBGColorEvent;
+
 // ~ Non-Static
 
 // ~~ public
@@ -196,6 +198,17 @@ public class RootWindows : MonoBehaviour {
         return args.Response;
     }
 
+    public static void SetBGColor(
+        string uniqueID,
+        Color bgColor
+    ){
+        _setBGColorEvent.Publish(
+            null,
+            uniqueID,
+            bgColor
+        );
+    }
+
 // ~~ private
 
 // ~ Non-Static
@@ -230,6 +243,8 @@ public class RootWindows : MonoBehaviour {
         _deregisterObjectAbilityEvent =
             new RootEvent<string, Action, Action<GameObject[]>, string>();
 
+        _setBGColorEvent = new RootEvent<string, Color, string>();
+
         _subjectEvent.Subscribe(HandleSubject);
 
         _registerDataEvent.Subscribe(HandleRegisterData);
@@ -241,6 +256,8 @@ public class RootWindows : MonoBehaviour {
         _deregisterSelfAbilityEvent.Subscribe(HandleDeregisterSelfAbility);
         _deregisterLocationAbilityEvent.Subscribe(HandleDeregisterLocationAbility);
         _deregisterObjectAbilityEvent.Subscribe(HandleDeregisterObjectAbility);
+
+        _setBGColorEvent.Subscribe(HandleSetBGColor);
     }
 
     private void HandleRegisterData(
@@ -316,5 +333,15 @@ public class RootWindows : MonoBehaviour {
         CustomEventArgs<string, ISubject> args
     ) {
         args.Response = _windowManager.GetSubject(args.Argument);
+    }
+
+    private void HandleSetBGColor(
+        object source,
+        CustomEventArgs<string, Color, string> args
+    ) {
+        args.Response = _windowManager.SetBGColor(
+            args.Argument1,
+            args.Argument2
+        );
     }
 }

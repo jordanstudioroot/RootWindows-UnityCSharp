@@ -430,6 +430,12 @@ public class Subject : ISubject {
         Refresh();
     }
 
+    public void SetBGColor(Color bgColor) {
+        _detailView.ViewData.ContentBGColor = bgColor;
+        _tooltipView.ViewData.ContentBGColor = bgColor;
+        _actionBarView.ViewData.ContentBGColor = bgColor;
+    }
+
     // ~~ private
     private void HandleDataChanged(IViewData data) {
         Refresh();

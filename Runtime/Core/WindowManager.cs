@@ -278,6 +278,16 @@ public class WindowManager : MonoBehaviour
         }
     }
 
+    public string SetBGColor(string uniqueID, Color bgColor) {
+        if (_subjects.ContainsKey(uniqueID)) {
+            Subject subject = _subjects[uniqueID];
+            subject.SetBGColor(bgColor);
+            return "success";
+        }
+        return "failure";
+    }
+
+    // ~~ private
     private void TryRegisterSubject<T>(
         string uniqueID, 
         Dictionary<string, Subject> subjects,
@@ -296,6 +306,18 @@ public class WindowManager : MonoBehaviour
             subjects.Add(uniqueID, new Subject(Canvas));
             TryRegisterData<T>(subjects[uniqueID], data);
         }
+    }
+
+    private Canvas InititalizeCanvas() {
+        GameObject resultObj = new GameObject(RW_CANVAS_NAME);
+
+        Canvas result = resultObj.AddComponent<Canvas>();
+        result.renderMode = RenderMode.ScreenSpaceOverlay;
+
+        resultObj.AddComponent<CanvasScaler>();
+        resultObj.AddComponent<GraphicRaycaster>();
+ 
+        return result;
     }
 
     private void TryRegisterData<T>(Subject subject, T data) where T : IViewData {
@@ -432,18 +454,5 @@ public class WindowManager : MonoBehaviour
                 onAbilityClick,
                 onAbilityConfirm
             );
-    }
-
-    // ~~ private
-    private Canvas InititalizeCanvas() {
-        GameObject resultObj = new GameObject(RW_CANVAS_NAME);
-
-        Canvas result = resultObj.AddComponent<Canvas>();
-        result.renderMode = RenderMode.ScreenSpaceOverlay;
-
-        resultObj.AddComponent<CanvasScaler>();
-        resultObj.AddComponent<GraphicRaycaster>();
- 
-        return result;
     }
 }

@@ -211,6 +211,7 @@ public class SubjectDetailView : View {
             GameObject keyLeafObj = new GameObject(pair.Key.ToString());
             TextMeshProUGUI keyTextMesh = keyLeafObj.AddComponent<TextMeshProUGUI>();
             keyTextMesh.text = pair.Key;
+            keyTextMesh.color = Color.black;
             keyTextMesh.enableAutoSizing = true;
             keyTextMesh.fontSizeMin = TextConstants.BODY_TEXT_SIZE;
             keyTextMesh.fontSizeMax = TextConstants.BODY_TEXT_SIZE_LARGE;
@@ -221,6 +222,7 @@ public class SubjectDetailView : View {
             GameObject valueLeafObj = new GameObject(pair.Value.ToString());
             TextMeshProUGUI valueTextMesh = valueLeafObj.AddComponent<TextMeshProUGUI>();
             valueTextMesh.text = pair.Value[0].ToString();
+            valueTextMesh.color = Color.black;
             valueTextMesh.enableAutoSizing = true;
             valueTextMesh.fontSizeMin = TextConstants.BODY_TEXT_SIZE;
             valueTextMesh.fontSizeMax = TextConstants.BODY_TEXT_SIZE_LARGE;
@@ -241,6 +243,7 @@ public class SubjectDetailView : View {
         GameObject leafObj = new GameObject("Description");
         Text descriptionText = leafObj.AddComponent<Text>();
         descriptionText.text = data.Description;
+        descriptionText.color = Color.black;
         descriptionText.font = UnityBuiltin.Font("Arial");
         leafObj.transform.SetParent(root.transform, false);
     }

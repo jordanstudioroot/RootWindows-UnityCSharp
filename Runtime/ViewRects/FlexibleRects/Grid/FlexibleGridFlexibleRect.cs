@@ -19,6 +19,7 @@ public class FlexibleGridFlexibleRect : GridViewRect
         GameObject result = new GameObject("Flexible Grid View");
         FlexibleGridFlexibleRect resultMono = result.AddComponent<FlexibleGridFlexibleRect>();
         resultMono.ViewData = viewData;
+        resultMono.BGColor = new Color(0f, 0f, 0f, 0f);
         resultMono.GridLayoutGroup.constraint = ConstraintType;
         resultMono.GridLayoutGroup.constraintCount = constraintCount;
         return resultMono;

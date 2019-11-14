@@ -7,6 +7,7 @@ public class HorizontalFlexibleRect : FlexibleViewRect {
         GameObject result = new GameObject("Horizontal View Rect");
         HorizontalFlexibleRect resultMono = result.AddComponent<HorizontalFlexibleRect>();
         resultMono.ViewData = viewData;
+        resultMono.BGColor = new Color(0f, 0f, 0f, 0f);
         return resultMono;
     } 
 

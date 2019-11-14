@@ -8,6 +8,7 @@ public class VerticalFlexibleRect : FlexibleViewRect
         GameObject result = new GameObject("Vertical View Rect");
         VerticalFlexibleRect resultMono = result.AddComponent<VerticalFlexibleRect>();
         resultMono.ViewData = viewData;
+        resultMono.BGColor = new Color(0f, 0f, 0f, 0f);
         return resultMono;
     }
 
