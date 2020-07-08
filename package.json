@@ -9,7 +9,7 @@
         "studioroot.root-events": "1.0.0",
         "com.unity.textmeshpro": "2.0.1",
         "rootextensions-unitycsharp" : "1.0.0",
-        "jnelsis.root-utils" : "1.0.0"
+        "rootutils-unitycsharp" : "1.0.0"
     },
     "keywords": [
         "Root",
