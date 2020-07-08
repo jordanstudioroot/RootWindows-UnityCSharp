@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
     "name":"rootwindows-unitycsharp",
-    "version":"1.0.0",
-=======
-    "name": "rootwindows-unitycsharp",
     "version": "1.0.0",
->>>>>>> 716547178070e5ec42fe5835925937f08450b262
     "displayName": "Root Windows",
     "description": "Proprietary Tactical/Strategic game UI tool.",
     "unity": "2019.1", 
@@ -14,21 +9,16 @@
         "Assets/rootextensions-unitycsharp",
         "scripts"
     ],
-    "scripts":{"postinstall":"node scripts/postinstall.js rootextensions-unitycsharp"},
+    "scripts":{
+        "postinstall":"node scripts/postinstall.js rootwindows-unitycsharp"
+    },
     "dependencies": {
-<<<<<<< HEAD
         "ncp":"^2.0.0",
         "mkdirp":"^0.5.1",
-        "studioroot.root-events": "1.0.0",
-        "com.unity.textmeshpro": "2.0.1",
-        "jnelsis.root-extensions" : "1.0.0",
-        "jnelsis.root-utils" : "1.0.0"
-=======
         "rootevents-unitycsharp": "1.0.0",
         "textmeshpronpm-unitycsharp": "1.0.0",
         "rootextensions-unitycsharp" : "1.0.0",
         "rootutils-unitycsharp" : "1.0.0"
->>>>>>> 716547178070e5ec42fe5835925937f08450b262
     },
     "keywords": [
         "Root",
