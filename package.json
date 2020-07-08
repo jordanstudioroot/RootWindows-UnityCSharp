@@ -6,7 +6,7 @@
     "unity": "2019.1", 
     "unityRelease": "7f1",
     "dependencies": {
-        "studioroot.root-events": "1.0.0",
+        "rootevents-unitycsharp": "1.0.0",
         "com.unity.textmeshpro": "2.0.1",
         "rootextensions-unitycsharp" : "1.0.0",
         "rootutils-unitycsharp" : "1.0.0"
