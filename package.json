@@ -1,5 +1,5 @@
 {
-    "name": "jnelsis.root-windows",
+    "name": "rootwindows-unitycsharp",
     "version": "1.0.0",
     "displayName": "Root Windows",
     "description": "Proprietary Tactical/Strategic game UI tool.",
@@ -8,7 +8,7 @@
     "dependencies": {
         "studioroot.root-events": "1.0.0",
         "com.unity.textmeshpro": "2.0.1",
-        "jnelsis.root-extensions" : "1.0.0",
+        "rootextensions-unitycsharp" : "1.0.0",
         "jnelsis.root-utils" : "1.0.0"
     },
     "keywords": [
