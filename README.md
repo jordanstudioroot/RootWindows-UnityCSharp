@@ -9,7 +9,8 @@ Initialize an existing Unity project using UnityNPMInit (`npx jordanstudioroot/u
 
 ## Tests And Test Coverage
 ### Test Coverage
-![image1](https://www.dropbox.com/s/oyi0iva7i0952cu/code_coverage_7_9_2020.PNG?raw=1)
+![cc_heading](https://www.dropbox.com/s/ez4nfeehynkh37s/code_coverate_label.PNG?raw=1)
+![cc_body](https://www.dropbox.com/s/oyi0iva7i0952cu/code_coverage_7_9_2020.PNG?raw=1)
 
 ### TODO
 - More unit tests to obtain complete code coverage.
