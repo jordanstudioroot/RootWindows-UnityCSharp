@@ -15,10 +15,10 @@
     "dependencies": {
         "ncp":"^2.0.0",
         "mkdirp":"^0.5.1",
-        "rootevents-unitycsharp": "1.0.0",
-        "textmeshpronpm-unitycsharp": "1.0.0",
-        "rootextensions-unitycsharp" : "1.0.0",
-        "rootutils-unitycsharp" : "1.0.0"
+        "textmeshpronpm-unitycsharp" : "git://github.com/jordanstudioroot/textmeshpronpm-unitycsharp.git",
+        "rootextensions-unitycsharp" : "git://github.com/jordanstudioroot/rootextensions-unitycsharp.git",
+        "rootutils-unitycsharp" : "git://github.com/jordanstudioroot/rootutils-unitycsharp.git",
+        "rootevents-unitycsharp" : "git://github.com/jordanstudioroot/rootevents-unitycsharp.git"
     },
     "keywords": [
         "Root",
