@@ -10,9 +10,11 @@ This package uses TextMeshProNPM-UnityCSharp, so the Unity Package Manager versi
 
 Initialize an existing Unity project using UnityNPMInit (`npx jordanstudioroot/unitynpminit [project name]` from the root directory) and run `npm install jordanstudioroot/rootwindows-unitycsharp`, or clone/copy the repo into an existing Unity projects Assets folder.
 
-## TODO
+## Test Coverage Status
+![image1](https://www.dropbox.com/s/c0sc956uchhm3bg/rootgen1.png?raw=1)
 
-- [x] Unit Tests
+
+## Planned Features
 - [ ] Support for closing open windows via direct user input.
 - [ ] Support for stacking windows.
 - [ ] More robust support for triggering actions on MonoBehaviors with buttons.
