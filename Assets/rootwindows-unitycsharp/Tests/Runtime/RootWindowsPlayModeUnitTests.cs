@@ -4,60 +4,78 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using RootExtensions;
+
 
 namespace Tests
 {
-    public class RootWindowsPlayModeUnitTests
-    {
+    public class SubjectDetailViewTests {
         public const float VisualTimer = .001f;
-        
+
         [UnityTest]
-        public IEnumerator SubjectDetailView_GetViewAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator GetView_AllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size
         ) {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
 
 // Assert
             Assert.DoesNotThrow(() => {
                 SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
             });
+            
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_NoArgAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size
         ) {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
 
 // Assert
             Assert.DoesNotThrow(() => {
                 detailView.Refresh();
             });
+            
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshAttributesAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_AttributesArgAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -65,11 +83,17 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
-                IAttributeData aData = ValueSourceCommon.GetSubAttributeData();
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
+            
+            IAttributeData aData = ValueSourceCommon.GetMockAttributeData();
 // Assert
             Assert.DoesNotThrow(() => {
                 detailView.Refresh(aData);
@@ -77,11 +101,11 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshDescriptionAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_DetailArgAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -89,11 +113,19 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+            
             SubjectDetailView detailView = 
-                SubjectDetailView.GetView(GetUICanvas(), size, location);
-            IDescriptionData dData = ValueSourceCommon.GetSubDescriptionData();
+                SubjectDetailView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
+            
+            IDescriptionData dData = ValueSourceCommon.GetMockDescriptionData();
 
 // Assert
             Assert.DoesNotThrow(() => {
@@ -102,11 +134,11 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshPortraitAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_PortraitArgAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -114,11 +146,17 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
-            IPortraitData pData = ValueSourceCommon.GetSubPortraitData();
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
+            
+            IPortraitData pData = ValueSourceCommon.GetMockPortraitData();
 
 // Assert
             Assert.DoesNotThrow(() => {
@@ -127,11 +165,11 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshAttributesPortraitAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_AttributePortraitArgsAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -139,12 +177,18 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
-            IAttributeData aData = ValueSourceCommon.GetSubAttributeData();
-            IPortraitData pData = ValueSourceCommon.GetSubPortraitData();
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
+                
+            IAttributeData aData = ValueSourceCommon.GetMockAttributeData();
+            IPortraitData pData = ValueSourceCommon.GetMockPortraitData();
 
 // Assert
             Assert.DoesNotThrow(() => {
@@ -153,11 +197,11 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshAttributesDescriptionAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_AttributesDescriptionArgsAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -165,12 +209,18 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
-            IAttributeData aData = ValueSourceCommon.GetSubAttributeData();
-            IDescriptionData dData = ValueSourceCommon.GetSubDescriptionData();
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
+
+            IAttributeData aData = ValueSourceCommon.GetMockAttributeData();
+            IDescriptionData dData = ValueSourceCommon.GetMockDescriptionData();
 
 // Assert
             Assert.DoesNotThrow(() => {
@@ -179,11 +229,11 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshAttributesDescriptionPortraitAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_AttributesDescriptionPortraitArgsAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -191,26 +241,35 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
-            IAttributeData aData = ValueSourceCommon.GetSubAttributeData();
-            IDescriptionData dData = ValueSourceCommon.GetSubDescriptionData();
-            IPortraitData pData = ValueSourceCommon.GetSubPortraitData();
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
+            
+            IAttributeData aData = ValueSourceCommon.GetMockAttributeData();
+            IDescriptionData dData = ValueSourceCommon.GetMockDescriptionData();
+            IPortraitData pData = ValueSourceCommon.GetMockPortraitData();
 
 // Assert
             Assert.DoesNotThrow(() => {
                 detailView.Refresh(aData, pData, dData);
             });
+
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator SubjectDetailView_RefreshDescriptionPortraitAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_DescriptionPortraitArgsAllLocationsSizes_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
@@ -218,83 +277,54 @@ namespace Tests
         )
         {
 // Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            
             SubjectDetailView detailView = 
-                    SubjectDetailView.GetView(GetUICanvas(), size, location);
-            IPortraitData pData = ValueSourceCommon.GetSubPortraitData();
-            IDescriptionData dData = ValueSourceCommon.GetSubDescriptionData();
+                    SubjectDetailView.GetView(
+                        SetUpCommon.GetUICanvas(),
+                        size,
+                        location
+                    );
+            
+            IPortraitData pData = ValueSourceCommon.GetMockPortraitData();
+            IDescriptionData dData = ValueSourceCommon.GetMockDescriptionData();
 
 // Assert
             Assert.DoesNotThrow(() => {
                 detailView.Refresh(null, pData, dData);
             });
+
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
+    }
 
-// Subject UnityTests
+    public class ActionViewBarTests {
+        public const float VisualTimer = .001f;
+
+        // ActionBarView UnityTests
         [UnityTest]
-        public IEnumerator Subject_ShowDetailAllLocationsSizes_DoesNotThrowException(
+        public IEnumerator Refresh_NoArg_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            Subject subjectUnderTest = new Subject(GetUICanvas());
-
-// Assert
-            Assert.DoesNotThrow(() => {
-                subjectUnderTest.ShowDetail(location, size);
-            });
-            yield return new WaitForSeconds(VisualTimer);
-// Tear Down
-            DestroyAllGameObjects();
-        }
-
-        [UnityTest]
-        public IEnumerator Subject_HideDetailAllLocationsSizes_DoesNotThrowException(
-            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
-            CardinalDirections location,
-            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
-            ViewSizes size 
-        ) {
-//  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            Subject subjectUnderTest = new Subject(GetUICanvas());
-            subjectUnderTest.ShowDetail(location, size);
-
-// Assert
-            yield return new WaitForSeconds(VisualTimer * .5f);
-            Assert.DoesNotThrow(() => {
-                subjectUnderTest.HideDetail();
-            });
-            yield return new WaitForSeconds(VisualTimer * .5f);
-
-// Tear Down
-            DestroyAllGameObjects();
-        }
-
-// ActionBarView UnityTests
-        [UnityTest]
-        public IEnumerator ActionBarView_Refresh_DoesNotThrowException(
-            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
-            CardinalDirections location,
-            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
-            ViewSizes size 
-        ) {
-//  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
+            
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -304,22 +334,30 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator ActionBarView_RefreshSelfActions_DoesNotThrowException(
+        public IEnumerator Refresh_SelfAbilitiesArg_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -331,22 +369,30 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator ActionBarView_RefreshLocationActions_DoesNotThrowException(
+        public IEnumerator Refresh_LocationAbilitiesArg_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -359,22 +405,30 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator ActionBarView_RefreshObjectActions_DoesNotThrowException(
+        public IEnumerator Refresh_ObjectAbilitiesArg_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -388,22 +442,30 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator ActionBarView_RefreshSelfLocationActions_DoesNotThrowException(
+        public IEnumerator Refresh_SelfLocationAbilitiesArgs_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -416,22 +478,31 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator ActionBarView_RefreshSelfLocationObjectActions_DoesNotThrowException(
+        public IEnumerator Refresh_SelfLocationObjectAbilitiesArgs_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -445,22 +516,31 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator ActionBarView_RefreshLocationObjectActions_DoesNotThrowException(
+        public IEnumerator Refresh_LocationObjectAbilitiesArgs_DoesNotThrowException(
             [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
             CardinalDirections location,
             [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
             ViewSizes size 
         ) {
 //  Set Up
-            CreateTestCamera();
-            CreateTestNameCanvas(TestContext.CurrentContext.Test.Name);
-            CreateEventSystem();
+            SetUpCommon.CreateTestCamera();
+            
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+            
+            SetUpCommon.CreateEventSystem();
+            
             ActionBarView abView = 
-                ActionBarView.GetView(GetUICanvas(), size, location);
+                ActionBarView.GetView(
+                    SetUpCommon.GetUICanvas(),
+                    size,
+                    location
+                );
             
 // Assert
             Assert.DoesNotThrow(() => {
@@ -474,154 +554,380 @@ namespace Tests
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
+    }
+
+    public class RootWindowsTests {
+        public const float VisualTimer = .001f;
 
         [UnityTest]
-        public IEnumerator RootWindows_RegisterSubject_DoesNotThrowException() {
+        public IEnumerator RegisterViewData_AttributeViewDataArg_DoesNotThrowException() {
 // Set Up            
             GameObject testObj = new GameObject("testobj");
             RootWindows testMono = testObj.AddComponent<RootWindows>();
-            IAttributeData testData = ValueSourceCommon.GetSubAttributeData();
+            IAttributeData testData = ValueSourceCommon.GetMockAttributeData();
             
 // Assert
             Assert.DoesNotThrow(() => {
-                RootWindows.Register("test", testData);
+                RootWindows.RegisterViewData("test", testData);
             });
 
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator RootWindows_RegisterAction_DoesNotThrowException() {
+        public IEnumerator RegisterSelfAbility_NoArgActionArgs_DoesNotThrowException() {
 // Set Up            
             GameObject testObj = new GameObject("testobj");
             RootWindows testMono = testObj.AddComponent<RootWindows>();
             
 // Assert
             Assert.DoesNotThrow(() => {
-                RootWindows.Register(
+                RootWindows.RegisterSelfAbility(
                     "test",
-                    ValueSourceCommon.GetStubNoArgAction(),
-                    ValueSourceCommon.GetStubNoArgAction()
+                    ValueSourceCommon.GetMockNoArgAction(),
+                    ValueSourceCommon.GetMockNoArgAction()
                 );
             });
 
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator RootWindows_RegisterSelfAction_DoesNotThrowException() {
+        public IEnumerator RegisterLocationAbility_NoArgV3ArgActionArgs_DoesNotThrowException() {
 // Set Up            
             GameObject testObj = new GameObject("testobj");
             RootWindows testMono = testObj.AddComponent<RootWindows>();
             
 // Assert
             Assert.DoesNotThrow(() => {
-                RootWindows.Register(
+                RootWindows.RegisterLocationAbility(
                     "test",
-                    ValueSourceCommon.GetStubNoArgAction(),
-                    ValueSourceCommon.GetStubV3ArgAction()
+                    ValueSourceCommon.GetMockNoArgAction(),
+                    ValueSourceCommon.GetMockV3ArgAction()
                 );
             });
 
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator RootWindows_RegisterV3Action_DoesNotThrowException() {
+        public IEnumerator RegisterObjectAbility_NoArgObjectArrayArgActionArgs_DoesNotThrowException() {
 // Set Up            
             GameObject testObj = new GameObject("testobj");
             RootWindows testMono = testObj.AddComponent<RootWindows>();
             
 // Assert
             Assert.DoesNotThrow(() => {
-                RootWindows.Register(
+                RootWindows.RegisterObjectAbility(
                     "test",
-                    ValueSourceCommon.GetStubNoArgAction(),
-                    ValueSourceCommon.GetStubNoArgAction()
+                    ValueSourceCommon.GetMockNoArgAction(),
+                    ValueSourceCommon.GetMockObjectArrayArgAction()
                 );
             });
 
             yield return new WaitForSeconds(VisualTimer);
 
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
+        }
+    }
+    
+    public class SubjectTests {
+        public const float VisualTimer = .001f;
+        
+// Subject UnityTests
+        [UnityTest]
+        public IEnumerator ShowDetail_WithNoDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
+            
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subjectUnderTest = new Subject(
+                SetUpCommon.GetUICanvas()
+            );
+
+// Assert
+            Assert.DoesNotThrow(() => {
+                subjectUnderTest.ShowDetail(location, size);
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+// Tear Down
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator RootWindows_RegisterGOArrAction_DoesNotThrowException() {
-// Set Up            
-            GameObject testObj = new GameObject("testobj");
-            RootWindows testMono = testObj.AddComponent<RootWindows>();
+        public IEnumerator ShowDetail_WithAttributeDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
             
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subject = new Subject(SetUpCommon.GetUICanvas());
+
+            subject.TryAddData(
+                ValueSourceCommon.GetMockAttributeData()
+            );
+
 // Assert
             Assert.DoesNotThrow(() => {
-                RootWindows.Register(
-                    "test",
-                    ValueSourceCommon.GetStubNoArgAction(),
-                    ValueSourceCommon.GetStubGameObjectArrAction()
-                );
+                subject.ShowDetail(location, size);
             });
 
             yield return new WaitForSeconds(VisualTimer);
-
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
         [UnityTest]
-        public IEnumerator RootWindows_GetSubject_DoesNotThrowException() {
-// Set Up            
-            GameObject testObj = new GameObject("testobj");
-            RootWindows testMono = testObj.AddComponent<RootWindows>();
+        public IEnumerator ShowDetail_WithPortraitDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
             
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subject = new Subject(SetUpCommon.GetUICanvas());
+
+            subject.TryAddData(
+                ValueSourceCommon.GetMockPortraitData()
+            );
+
 // Assert
             Assert.DoesNotThrow(() => {
-                RootWindows.Register(
-                    "test",
-                    ValueSourceCommon.GetStubNoArgAction(),
-                    ValueSourceCommon.GetStubGameObjectArrAction()
-                );
-                ISubject subject = RootWindows.Subject("test");
+                subject.ShowDetail(location, size);
             });
 
             yield return new WaitForSeconds(VisualTimer);
-
 // Tear Down
-            DestroyAllGameObjects();
+            TearDownCommon.DestroyAllGameObjects();
         }
 
-// Set Up Methods
-        private void CreateTestCamera() {
+        [UnityTest]
+        public IEnumerator ShowDetail_WithDescriptionDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
+            
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subject = new Subject(SetUpCommon.GetUICanvas());
+
+            subject.TryAddData(
+                ValueSourceCommon.GetMockDescriptionData()
+            );
+
+// Assert
+            Assert.DoesNotThrow(() => {
+                subject.ShowDetail(location, size);
+            });
+
+            yield return new WaitForSeconds(VisualTimer);
+// Tear Down
+            TearDownCommon.DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator HideDetail_WithNoDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subjectUnderTest = new Subject(
+                SetUpCommon.GetUICanvas()
+            );
+
+            subjectUnderTest.ShowDetail(location, size);
+
+// Assert
+            yield return new WaitForSeconds(VisualTimer * .5f);
+            
+            Assert.DoesNotThrow(() => {
+                subjectUnderTest.HideDetail();
+            });
+            
+            yield return new WaitForSeconds(VisualTimer * .5f);
+
+// Tear Down
+            TearDownCommon.DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator HideDetail_WithAttributeDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subjectUnderTest = new Subject(
+                SetUpCommon.GetUICanvas()
+            );
+
+            subjectUnderTest.TryAddData(
+                ValueSourceCommon.GetMockAttributeData()
+            );
+
+            subjectUnderTest.ShowDetail(location, size);
+
+// Assert
+            yield return new WaitForSeconds(VisualTimer * .5f);
+            
+            Assert.DoesNotThrow(() => {
+                subjectUnderTest.HideDetail();
+            });
+            
+            yield return new WaitForSeconds(VisualTimer * .5f);
+
+// Tear Down
+            TearDownCommon.DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator HideDetail_WithPortraitDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subjectUnderTest = new Subject(
+                SetUpCommon.GetUICanvas()
+            );
+
+            subjectUnderTest.TryAddData(
+                ValueSourceCommon.GetMockPortraitData()
+            );
+
+            subjectUnderTest.ShowDetail(location, size);
+
+// Assert
+            yield return new WaitForSeconds(VisualTimer * .5f);
+            
+            Assert.DoesNotThrow(() => {
+                subjectUnderTest.HideDetail();
+            });
+            
+            yield return new WaitForSeconds(VisualTimer * .5f);
+
+// Tear Down
+            TearDownCommon.DestroyAllGameObjects();
+        }
+
+        [UnityTest]
+        public IEnumerator HideDetail_WithDescriptionDataAllLocationsSizes_DoesNotThrowException(
+            [ValueSource(typeof(ValueSourceCommon), "AllViewLocations")]
+            CardinalDirections location,
+            [ValueSource(typeof(ValueSourceCommon), "AllViewSizes")]
+            ViewSizes size 
+        ) {
+//  Set Up
+            SetUpCommon.CreateTestCamera();
+            SetUpCommon.CreateTestNameCanvas(
+                TestContext.CurrentContext.Test.Name
+            );
+
+            Subject subjectUnderTest = new Subject(
+                SetUpCommon.GetUICanvas()
+            );
+
+            subjectUnderTest.TryAddData(
+                ValueSourceCommon.GetMockDescriptionData()
+            );
+
+            subjectUnderTest.ShowDetail(location, size);
+
+// Assert
+            yield return new WaitForSeconds(VisualTimer * .5f);
+            
+            Assert.DoesNotThrow(() => {
+                subjectUnderTest.HideDetail();
+            });
+            
+            yield return new WaitForSeconds(VisualTimer * .5f);
+
+// Tear Down
+            TearDownCommon.DestroyAllGameObjects();
+        }
+    }
+
+    public static class SetUpCommon {
+        // Set Up Methods
+        public static void CreateTestCamera() {
             GameObject cameraObj = new GameObject("Test Camera");
             cameraObj.tag = "MainCamera";
             Camera camera = cameraObj.AddComponent<Camera>();
         }
 
-        private Canvas GetUICanvas() {
+        public static Canvas GetUICanvas() {
             GameObject resultObj = new GameObject("UI Test Canvas");
             Canvas result = resultObj.AddComponent<Canvas>();
             result.renderMode = RenderMode.ScreenSpaceOverlay;
             return result;
         }
 
-        private EventSystem CreateEventSystem() {
+        public static EventSystem CreateEventSystem() {
             GameObject resultObj = new GameObject("Event System");
             EventSystem resultMono = resultObj.AddComponent<EventSystem>();
             return resultMono;
         }
 
-        private void CreateTestNameCanvas(string testName) {
+        public static void CreateTestNameCanvas(string testName) {
             Canvas canvas = 
                 new GameObject("Test Name Canvas").AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -649,9 +955,11 @@ namespace Tests
                 imageRect.localPosition.y - (imageRect.sizeDelta.y / 2f)
             );
         }
+    }
 
-// Tear Down Methods
-        private void DestroyAllGameObjects() {
+    public static class TearDownCommon {
+        // Tear Down Methods
+        public static void DestroyAllGameObjects() {
             GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
             
             for (int i = 0; i < objects.Length; i++) {
@@ -660,3 +968,4 @@ namespace Tests
         }
     }
 }
+

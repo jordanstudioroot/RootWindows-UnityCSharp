@@ -1,12 +1,12 @@
 {
     "name": "Unity.RootWindows",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:61f3994b2abe96b48ab6bfdf63d1da5b",
-        "GUID:2a1b6fa5c719ae14083df69c1d9f6116",
-        "GUID:40984db21e428a5418dbca248226ce8c"
+        "GUID:b60a245470769544db247463a1d7d5d9",
+        "GUID:ad6be23dff55bf748a5f4b3189514bfa",
+        "GUID:44011771b0647494baecda71dd566002",
+        "GUID:e3c915e2f0abd8a47b75cfe5c45bd797",
+        "GUID:23dc9bf9201ffdc4ab271f536ff51a2f"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

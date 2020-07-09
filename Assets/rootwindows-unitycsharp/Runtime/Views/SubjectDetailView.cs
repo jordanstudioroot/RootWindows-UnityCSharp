@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using RootUtils;
+using RootUtils.Assets;
 
 public class SubjectDetailView : View {
 // FIELDS ~~~~~~~~~~
@@ -209,24 +211,20 @@ public class SubjectDetailView : View {
             grandchild.transform.SetParent(child.transform, false);
 
             GameObject keyLeafObj = new GameObject(pair.Key.ToString());
-            TextMeshProUGUI keyTextMesh = keyLeafObj.AddComponent<TextMeshProUGUI>();
-            keyTextMesh.text = pair.Key;
-            keyTextMesh.color = Color.black;
-            keyTextMesh.enableAutoSizing = true;
-            keyTextMesh.fontSizeMin = TextConstants.BODY_TEXT_SIZE;
-            keyTextMesh.fontSizeMax = TextConstants.BODY_TEXT_SIZE_LARGE;
-            keyTextMesh.ForceMeshUpdate();
+            Text keyText = keyLeafObj.AddComponent<Text>();
+            keyText.font = UnityBuiltin.Font("Arial");
+            keyText.text = pair.Key;
+            keyText.color = Color.black;
+            keyText.fontSize = (int)TextConstants.BODY_TEXT_SIZE;
 
             keyLeafObj.transform.SetParent(grandchild.transform, false);
 
             GameObject valueLeafObj = new GameObject(pair.Value.ToString());
-            TextMeshProUGUI valueTextMesh = valueLeafObj.AddComponent<TextMeshProUGUI>();
-            valueTextMesh.text = pair.Value[0].ToString();
-            valueTextMesh.color = Color.black;
-            valueTextMesh.enableAutoSizing = true;
-            valueTextMesh.fontSizeMin = TextConstants.BODY_TEXT_SIZE;
-            valueTextMesh.fontSizeMax = TextConstants.BODY_TEXT_SIZE_LARGE;
-            valueTextMesh.ForceMeshUpdate();
+            Text valueText = valueLeafObj.AddComponent<Text>();
+            valueText.font = UnityBuiltin.Font("Arial");
+            valueText.text = pair.Value[0].ToString();
+            valueText.color = Color.black;
+            valueText.fontSize = (int)TextConstants.BODY_TEXT_SIZE;
             
             valueLeafObj.transform.SetParent(grandchild.transform, false);              
         }

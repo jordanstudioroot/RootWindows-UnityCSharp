@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
+using RootEvents;
+using RootUtils.Assets;
+using RootUtils.Validation;
+using RootLogging;
 
 public class RootWindows : MonoBehaviour {
 // FIELDS ~~~~~~~~~~
@@ -99,11 +103,11 @@ public class RootWindows : MonoBehaviour {
 // ~ Static
 
 // ~~ public
-    public static void Register(string uniqueID, IViewData data) {
+    public static void RegisterViewData(string uniqueID, IViewData data) {
         _registerDataEvent.Publish(null, uniqueID, data);
     }
 
-    public static void Register(
+    public static void RegisterSelfAbility(
         string uniqueID,
         Action onAbilityClick,
         Action onAbility
@@ -116,7 +120,7 @@ public class RootWindows : MonoBehaviour {
         );
     }
 
-    public static void Register(
+    public static void RegisterLocationAbility(
         string uniqueID, 
         Action onAbilityClick, 
         Action<Vector3> onAbility
@@ -129,7 +133,7 @@ public class RootWindows : MonoBehaviour {
         );
     }
 
-    public static void Register(
+    public static void RegisterObjectAbility(
         string uniqueID,
         Action onAbilityClick,
         Action<GameObject[]> onAbility
@@ -142,7 +146,7 @@ public class RootWindows : MonoBehaviour {
         );
     }
 
-    public static void Deregister(string uniqueID, IViewData data) {
+    public static void DeregisterViewData(string uniqueID, IViewData data) {
         _deregisterDataEvent.Publish(
             null,
             uniqueID,
@@ -150,7 +154,7 @@ public class RootWindows : MonoBehaviour {
         );
     }
 
-    public static void Deregister(
+    public static void DeregisterSelfAbility(
         string uniqueID,
         Action onAbilityClick,
         Action onAbilityConfirm
@@ -163,7 +167,7 @@ public class RootWindows : MonoBehaviour {
         );
     }
 
-    public static void Deregister(
+    public static void DeregisterLocationAbility(
         string uniqueID,
         Action onAbilityClick,
         Action<Vector3> onAbilityConfirm
@@ -176,7 +180,7 @@ public class RootWindows : MonoBehaviour {
         );
     }
 
-    public static void Deregister(
+    public static void DeregisterObjectAbility(
         string uniqueID,
         Action onAbilityClick,
         Action<GameObject[]> onAbilityConfirm
@@ -195,6 +199,7 @@ public class RootWindows : MonoBehaviour {
                 null,
                 uniqueID
             );
+            
         return args.Response;
     }
 
@@ -217,7 +222,13 @@ public class RootWindows : MonoBehaviour {
 
 // ~~ private
     private void Awake() {
-        EventSystemUtils.TryInitEventSystem();
+        if (!InstanceValidation.SingleInstanceExists<EventSystem>()) {
+            RootLog.Log(
+                "No event system.",
+                Severity.Warning
+            );
+        }
+
         gameObject.name = "Root Windows";
 
         _windowManager = gameObject.AddComponent<WindowManager>();

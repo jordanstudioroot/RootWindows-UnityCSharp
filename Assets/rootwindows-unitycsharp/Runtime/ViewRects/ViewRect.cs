@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using RootExtensions;
 
 [RequireComponent(typeof(CanvasRenderer), typeof(RectTransform), typeof(Image))]
 public abstract class ViewRect : MonoBehaviour {

@@ -2,6 +2,7 @@ using NSubstitute;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 public static class ValueSourceCommon {
     private const int NUM_ATTRIB_TYPES = 10;
 
@@ -71,19 +72,19 @@ public static class ValueSourceCommon {
         return (IEnumerable<ViewSizes>)Enum.GetValues(typeof(ViewSizes));
     }
 
-    public static IAttributeData GetSubAttributeData() {
+    public static IAttributeData GetMockAttributeData() {
         IAttributeData result = Substitute.For<IAttributeData>();
         result.AttributeDictionary.Returns(GetStubAttributeDict());
         return result;
     }
 
-    public static IPortraitData GetSubPortraitData() {
+    public static IPortraitData GetMockPortraitData() {
         IPortraitData result = Substitute.For<IPortraitData>();
         result.Portrait.Returns(Resources.Load<Sprite>("guyface"));
         return result;
     }
 
-    public static IDescriptionData GetSubDescriptionData() {
+    public static IDescriptionData GetMockDescriptionData() {
         IDescriptionData result = Substitute.For<IDescriptionData>();
         result.Description.Returns(GetStubDescriptionData());
         return result;
@@ -92,14 +93,14 @@ public static class ValueSourceCommon {
     public static List<Action> StubNoArgActionList(int actions) {
         List<Action> result = new List<Action>();
         for (int i = 0; i < actions; i++)
-            result.Add(GetStubNoArgAction());
+            result.Add(GetMockNoArgAction());
         return result;
     }
 
     public static List<Action<Vector3>> StubV3ArgActionList(int actions) {
         List<Action<Vector3>> result = new List<Action<Vector3>>();
         for (int i = 0; i < actions; i++)
-            result.Add(GetStubV3ArgAction());
+            result.Add(GetMockV3ArgAction());
         return result;
     }
 
@@ -107,14 +108,14 @@ public static class ValueSourceCommon {
         Dictionary<Action, Action<Vector3>> result = 
             new Dictionary<Action, Action<Vector3>>();
         for (int i = 0; i < actions; i++)
-            result.Add(GetStubNoArgAction(), GetStubV3ArgAction());
+            result.Add(GetMockNoArgAction(), GetMockV3ArgAction());
         return result;
     }
 
     public static List<Action<GameObject[]>> StubGameObjectArgActionList(int actions) {
         List<Action<GameObject[]>> result = new List<Action<GameObject[]>>();
         for (int i = 0; i < actions; i++)
-            result.Add(GetStubGameObjectArrAction());
+            result.Add(GetMockObjectArrayArgAction());
         return result;
     }
 
@@ -122,21 +123,21 @@ public static class ValueSourceCommon {
         Dictionary<Action, Action<GameObject[]>> result = 
             new Dictionary<Action, Action<GameObject[]>>();
         for (int i = 0; i < actions; i++)
-            result.Add(GetStubNoArgAction(), GetStubGameObjectArrAction());
+            result.Add(GetMockNoArgAction(), GetMockObjectArrayArgAction());
         return result;
     }
 
-    public static Action GetStubNoArgAction() {
+    public static Action GetMockNoArgAction() {
         Action result = Substitute.For<Action>();
         return result;
     }
 
-    public static Action<Vector3> GetStubV3ArgAction() {
+    public static Action<Vector3> GetMockV3ArgAction() {
         Action<Vector3> result = Substitute.For<Action<Vector3>>();
         return result;
     }
 
-    public static Action<GameObject[]> GetStubGameObjectArrAction() {
+    public static Action<GameObject[]> GetMockObjectArrayArgAction() {
         Action<GameObject[]> result = Substitute.For<Action<GameObject[]>>();
         return result;
     }

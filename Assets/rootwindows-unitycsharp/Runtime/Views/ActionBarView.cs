@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using RootExtensions;
+using RootUtils.ScreenSpace;
 
 public class ActionBarView : View
 {
@@ -324,7 +326,7 @@ public class ActionBarView : View
             leafObj.SetActive(true);
 
             GameObject textObj = new GameObject(pair.Value.Method.Name + " Text");
-            textObj.SetParent(leafObj.transform, false);
+            textObj.transform.SetParent(leafObj.transform, false);
             TextMeshProUGUI buttonText = textObj.AddComponent<TextMeshProUGUI>();
             buttonText.enableAutoSizing = true;
             buttonText.margin = new Vector4(10f, 10f, 10f, 10f);
