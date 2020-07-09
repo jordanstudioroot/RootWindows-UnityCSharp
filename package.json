@@ -16,7 +16,7 @@
         "ncp":"^2.0.0",
         "mkdirp":"^0.5.1",
         "rootevents-unitycsharp": "1.0.0",
-        "textmeshpronpm-unitycsharp": "1.0.0",
+        "textmeshpronpm-unitycsharp" : "git://github.com/jordanstudioroot/textmeshpronpm-unitycsharp.git",
         "rootextensions-unitycsharp" : "1.0.0",
         "rootutils-unitycsharp" : "1.0.0"
     },
