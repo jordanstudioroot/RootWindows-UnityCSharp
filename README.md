@@ -2,6 +2,14 @@
 
 Prototype drag-able, resize-able windowing UI system for Unity3D used by Studio Root Games. 
 
+## Requirements
+
+This package uses TextMeshProNPM-UnityCSharp, so the Unity Package Manager version of TextMeshPro must be removed using the Unity Package Manager UI in order for this package to work.
+
+## Installation
+
+Initialize an existing Unity project using UnityNPMInit (`npx jordanstudioroot/unitynpminit [project name]` from the root directory) and run `npm install jordanstudioroot/rootwindows-unitycsharp`, or clone/copy the repo into an existing Unity projects Assets folder.
+
 ## TODO
 
 - [x] Unit Tests
