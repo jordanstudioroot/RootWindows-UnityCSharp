@@ -12,7 +12,7 @@ Initialize an existing Unity project using UnityNPMInit (`npx jordanstudioroot/u
 ![image1](https://www.dropbox.com/s/oyi0iva7i0952cu/code_coverage_7_9_2020.PNG?raw=1)
 
 ### TODO
-- More unit tests to obtain complete test coverage.
+- More unit tests to obtain complete code coverage.
 - Automated tests for pointer-based window dragging.
 - Automated tests for pointer-based window resizing.
 - Automated tests for pointer-based button actions on action bar.
