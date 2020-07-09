@@ -1,5 +1,5 @@
 ## Root Windows
-Prototype drag-able, resize-able windowing UI system for Unity3D used by Studio Root Games. 
+Prototype drag-able, resize-able windows for representing instance-indepedent data about entities in games and the actions available to them, such as character attributes and special abilities. Developed for the Unity game engine.
 
 ## Requirements
 This package uses TextMeshProNPM-UnityCSharp, so the Unity Package Manager version of TextMeshPro must be removed using the Unity Package Manager UI in order for this package to work.
