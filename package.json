@@ -18,7 +18,7 @@
         "textmeshpronpm-unitycsharp" : "git://github.com/jordanstudioroot/textmeshpronpm-unitycsharp.git",
         "rootextensions-unitycsharp" : "git://github.com/jordanstudioroot/rootextensions-unitycsharp.git",
         "rootutils-unitycsharp" : "git://github.com/jordanstudioroot/rootutils-unitycsharp.git",
-        "rootevents-unitycsharp" : "git://github.com/jordantstudioroot/rootevents-unitycsharp.git"
+        "rootevents-unitycsharp" : "git://github.com/jordanstudioroot/rootevents-unitycsharp.git"
     },
     "keywords": [
         "Root",
