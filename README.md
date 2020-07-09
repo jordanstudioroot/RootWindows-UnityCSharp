@@ -11,7 +11,7 @@ This package uses TextMeshProNPM-UnityCSharp, so the Unity Package Manager versi
 Initialize an existing Unity project using UnityNPMInit (`npx jordanstudioroot/unitynpminit [project name]` from the root directory) and run `npm install jordanstudioroot/rootwindows-unitycsharp`, or clone/copy the repo into an existing Unity projects Assets folder.
 
 ## Test Coverage Status
-![image1](https://www.dropbox.com/s/oyi0iva7i0952cu/code_coverage_7_9_2020.PNG?dl=0)
+![image1](https://www.dropbox.com/s/oyi0iva7i0952cu/code_coverage_7_9_2020.PNG)
 
 
 ## Planned Features
